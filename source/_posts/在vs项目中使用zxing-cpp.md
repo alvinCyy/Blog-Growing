@@ -2,9 +2,9 @@
 title: 在vs项目中使用zxing-cpp
 date: 2018-01-24 12:28:17
 categories:
- 编码人生
+ 术业专攻
 tags:
- [Zxing]
+ [Zxing,Win32]
 ---
 <Excerpt in index | 首页摘要>
 <!-- more -->
@@ -19,9 +19,9 @@ tags:
 >* OpenCv 3.4.0
 >* cmake gui
 
-## zxing-cpp系列
->* [Zxing-cpp的编译](https://alvincyy.github.io/2018/01/23/win32下zxing的使用/)<br>
->* [在vs项目中使用zxing-cpp](https://alvincyy.github.io/2018/01/23/在vs项目中使用zxing-cpp/)<br>
+### zxing-cpp系列
+>* [在vs环境下编译zxing-cpp](https://alvincyy.github.io/2018/01/24/win32下zxing的使用-1/)
+>* [在vs项目中使用zxing-cpp](https://alvincyy.github.io/2018/01/24/在vs项目中使用zxing-cpp/)
 
 ## 正文
   通过前面，我们已经获得了lib文件和实例Demo，但是实例Demo是解析图片文件，而项目需求是解析YUV数据，这就需要修改成解析Yuv数据。虽然也可以通过将YUV数据保存成文件后在识别，但是因为在项目的实时传输流情况下不能影响视频的播放和显示，显然不现实，而且YUV数据直接解析二维码效率更高。
@@ -30,7 +30,7 @@ tags:
   再次运行成功。
   开始编写支持YUV数据解析的接口。具体的过程就不一一道明了，直接放代码。
   参考Demo实例的ImageReaderSource类编写出来CBufferReaderSource类
- >* BufferReaderSource.h文件
+#### BufferReaderSource.h文件
  
 ```c++
 #pragma once
@@ -55,7 +55,7 @@ public:
 	ArrayRef<char> getMatrix() const;
 };
 ```
- >* BufferReaderSource.cpp文件
+#### BufferReaderSource.cpp文件
  
 ```c++
 #include "BufferReaderSource.h"
@@ -103,7 +103,7 @@ ArrayRef<char> CBufferReaderSource::getMatrix() const
 	return buffer;   
 }  
 ```
->* ParseQRInfo.h 文件
+#### ParseQRInfo.h 文件
 
 ```c++
 #pragma once
@@ -155,7 +155,7 @@ public:
 	BOOL parseQRInfo(string filename,string& QRResult);
 };
 ```
->* ParseQRInfo.cpp
+#### ParseQRInfo.cpp
 
 ```c++
 #include "StdAfx.h"
@@ -203,7 +203,7 @@ BOOL CParseQRInfo::parseQRInfo(int width,int height,char* buffer,string &QRResul
 
 }  
 ```
->* 下面一小段代码是我在项目中调用这个接口。
+#### 下面一小段代码是我在项目中调用这个接口。
 
 ```c++
 CParseQRInfo test;
@@ -227,13 +227,12 @@ CParseQRInfo test;
 	}
 ```
 
->* 以上是关于解析YUV数据中二维码的代码，至于解析图片中的二维码在源代码的实例代码中就有，就不在这献丑了。
+> 以上是关于解析YUV数据中二维码的代码，至于解析图片中的二维码在源代码的实例代码中就有，就不在这献丑了。
 
-> 参考文献
->* [如何在visual studio下编译zxing cpp，以及zxing c++的使用](http://blog.csdn.net/sinat_29957455/article/details/60467090)<br>
->* [C++用zxing识别二维码](http://blog.csdn.net/coolingcoding/article/details/25804129)<br>
+### 参考文献
+>* [如何在visual studio下编译zxing cpp，以及zxing c++的使用](http://blog.csdn.net/sinat_29957455/article/details/60467090)
+>* [C++用zxing识别二维码](http://blog.csdn.net/coolingcoding/article/details/25804129)
 
-> 最后的话<br>
->* 如果遇到问题可以给我发邮件[chenyiyu@gmail.com](mailto:chenyiyu@gmail.com)<br>
+### 最后的话
+>* 如果遇到问题可以给我发邮件[chenyiyu@gmail.com](mailto:chenyiyu@gmail.com)
 >* 转载请注明原地址，[Alvin的博客](http://alvinCyy.github.io) 谢谢！
-

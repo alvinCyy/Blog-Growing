@@ -1,10 +1,10 @@
 ---
 title: 欢迎来到我的博客
 date: 2018-01-22 15:50:01
+top: 4
 categories:
- 置顶
+ 随笔杂记
 tags:
-original: false
 ---
 <Excerpt in index | 首页摘要>
 <!-- more -->

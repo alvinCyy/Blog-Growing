@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Welcome to My Home
+title: Alvin's Site
 subtitle: 雖千萬里，吾往矣
-description:
-author: yiyu.Chen
+description: 安防监控,智能家居,物联网
+author: Alvin
 language:
 timezone:
 
@@ -34,7 +34,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
